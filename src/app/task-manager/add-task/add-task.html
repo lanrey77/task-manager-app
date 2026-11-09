@@ -1,0 +1,63 @@
+<div class="add-task-page">
+    <section class="add-task-section">
+        <div class="add-task-header">
+            <h1>Add New Task</h1>
+        </div>
+
+        <div class="form-grid">
+            <div class="form-group">
+                <label for="task-title">Title *</label>
+                <input id="task-title" type="text" [(ngModel)]="newTask.title" placeholder="Enter task title"
+                    name="task-title" required />
+            </div>
+
+            <div class="form-group">
+                <label for="task-category">Category *</label>
+                <select id="task-category" [(ngModel)]="newTask.category" required>
+                    <option value="" disabled>Select Category</option>
+                    @for (category of categories; track category) {
+                    <option [value]="category">{{category}}</option>
+                    }
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="task-priority">Priority</label>
+                <select id="task-priority" [(ngModel)]="newTask.priority">
+                    @for (priority of priorities; track priority) {
+                    <option [value]="priority">{{priority}}</option>
+                    }
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="task-due-date">Due Date *</label>
+                <input id="task-due-date" type="date" [(ngModel)]="newTask.dueDate" required />
+            </div>
+
+            <div class="form-group">
+                <label for="task-status">Status</label>
+                <select id="task-status" [(ngModel)]="newTask.status">
+                    @for (status of statuses; track status) {
+                    <option [value]="status">{{status}}</option>
+                    }
+                </select>
+            </div>
+
+            <div class="form-group description-group">
+                <label for="task-description">Description</label>
+                <textarea id="task-description" [(ngModel)]="newTask.description"
+                    placeholder="Enter task description (optional)"></textarea>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button class="btn btn-primary" type="button" (click)="addTask()"
+                [disabled]="!newTask.title || !newTask.category || !newTask.dueDate"
+                [title]="(!newTask.title || !newTask.category || !newTask.dueDate) ? 'Please fill in required fields' : 'Add new task'">
+                Add Task
+            </button>
+            <a class="btn btn-secondary" routerLink="/dashboard">Cancel</a>
+        </div>
+    </section>
+</div>
