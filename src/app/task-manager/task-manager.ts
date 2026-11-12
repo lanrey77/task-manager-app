@@ -4,10 +4,11 @@ import { FormsModule } from '@angular/forms';
 import { FilterService } from '../services/filter.service';
 import { StatisticsService } from '../services/statistics.service';
 import { NewTask, Task, TaskService } from '../services/task.service';
+import { PriorityLabelPipe } from '../pipes/priority-label-pipe';
 
 @Component({
   selector: 'app-task-manager',
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, PriorityLabelPipe],
   templateUrl: './task-manager.html',
   styleUrl: './task-manager.css',
 })
